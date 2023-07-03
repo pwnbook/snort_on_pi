@@ -1,12 +1,12 @@
-## Snort on Pi
+# Snort on Pi
 Riverside City College Cyber Security Club Raspberry Pi Network Project 
 
-# Goal 
+## Goal 
 Create a complete network using Raspberry Pi single board computers.
 
 This page is for the Snort IDS/IPS section of our network. 
 
-# Working Notes 
+## Working Notes 
 These are not steps to follow but merely notes. 
 
 Snort on R Pi 
