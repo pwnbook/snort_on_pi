@@ -1,2 +1,4 @@
-# snort_on_pi
-Riverside City College Cyber Security Club Raspberry Pi network project 
+## Snort on Pi
+Riverside City College Cyber Security Club Raspberry Pi Network Project 
+
+
