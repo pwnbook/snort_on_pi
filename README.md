@@ -7,10 +7,109 @@ Create a complete network using Raspberry Pi single board computers.
 This page is for the Snort IDS/IPS section of our network. 
 
 ## Installation:
-Installing Snort on Ubuntu 23.04
+
+### Creating Network for VMs: 
+This network will allow for internet access and for the VMs to communicate with each other. 
+Most importantly this network will allow for "promiscous mode" to be enabled on the NIC. 
+This means the Snort machine can access the traffic from your other VMs and enforce your rules. 
 
 Source: 
+https://www.youtube.com/watch?v=vReAkOq-59I
+This video will show you how to create the Virtual Network your VMs will connect to. However it does not cover enabling "promiscous mode" which I will cover in the following steps.  
+
+Steps: 
+1) 1) Click on menu button next to "pushpin" icon 
+2) In Menu that appears click Network
+3) Click "NAT Networks" tab
+4) Click Create 
+5) right click new network select properties 
+6) Change "Network CIDR" to "192.168.100.0/24"
+	-optionally can change name of network 
+7) Click ok to close window
+
+After creating this network do the following to connect VMs to new network.
+
+**I am enabling promiscous mode on all VMs, but I am 93% certain promiscous mode needs to only be enabled on the Snort machine.**
+(Do on all VMs you want to be part of your network)
+
+8) Click on virtual machine in Virtualbox 
+9) Click on settings 
+10) Click on Network 
+11) Change "Attached to" to "NAT Network"
+12) In "name" menu make sure your network name is selected
+	-by default is "NatNetwork"
+13) Click on Advanced 
+14) Under promiscous mode select "allow all"
+
+### Set up Metasploitable (VM with vulnerable servers already set up)
+
+1) Go to: https://information.rapid7.com/download-metasploitable-2017.html
+
+2) Scroll down and fill out info under where it says "Download Now"
+	-for email put "info@rapid7.com" if yours is not accepted 
+
+3) Submit and download VM 7zip file
+
+4) Once downloaded extract the archive 
+
+5) Open virtualbox and select "New"
+
+6) Fill out name 
+
+7) For type select "Linux"
+
+8) For version select "Debian (64 bit)"
+
+9) Leav Hardware settigns alone and click next 
+
+10) In virtual hard disk menu select option for "Use an Existing Virtual Hard Disk File"
+
+12) Click Add
+
+13) Go to downloads and select .vmdk file in metasploitable2 folder you extracted earlier 
+
+14) Go to settings and change network adapter to NatNetwork 
+
+15) Click advanced and make sure promiscous mode is set to "allow all"
+
+
+
+
+
+Installing Snort on Ubuntu 23.04
+
+Instructions at Source are preferred and up to date.
+Source: 
 https://www.zenarmor.com/docs/linux-tutorials/how-to-install-and-configure-snort-on-ubuntu-linux
+
+Once Snort is installed 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 1) Install dependancies for Snort 
 	-Use "libpcre3-dev" instead of "libpcre++-dev"
